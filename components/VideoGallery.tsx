@@ -2,22 +2,22 @@
 import { useState, useEffect } from "react";
 
 const videos = [
-  { url: "/images/dalmatianhorse.mp4", thumbnail: "/images/dalmatianhorse.jpg" },
-  { url: "/images/floatingduck.mp4", thumbnail: "/images/floatingduck.jpg" },
-  { url: "/images/jellokeyboard.mp4", thumbnail: "/images/jellokeyboard.jpg" },
-  { url: "/images/audiskrt.mp4", thumbnail: "/images/audiskrt.jpg" },
-  { url: "/images/purplegorilla.mp4", thumbnail: "/images/purplegorilla.jpg" },
-  { url: "/images/deadpooljoker.mp4", thumbnail: "/images/deadpooljoker.jpg" },
-  { url: "/images/chromeknight.mp4", thumbnail: "/images/chromeknight.jpg" },
-  { url: "/images/cuttingjello.mp4", thumbnail: "/images/cuttingjello.jpg" },
-  { url: "/images/sharkscutting.mp4", thumbnail: "/images/sharkscutting.jpg" },
-  { url: "/images/matrixbear.mp4", thumbnail: "/images/matrixbear.jpg" },
-  { url: "/images/racoonscroll.mp4", thumbnail: "/images/racoonscroll.jpg" },
-  { url: "/images/drillingholes.mp4", thumbnail: "/images/drillingholes.jpg" },
-  { url: "/images/bubblefloat.mp4", thumbnail: "/images/bubblefloat.jpg" },
-  { url: "/images/corgirainbow.mp4", thumbnail: "/images/corgirainbow.jpg" },
-  { url: "/images/businesstiger.mp4", thumbnail: "/images/businesstiger.jpg" },
-  { url: "/images/frogdance.mp4", thumbnail: "/images/frogdance.jpg" },
+  { url: "/images/dalmatianhorse.mp4" },
+  { url: "/images/floatingduck.mp4" },
+  { url: "/images/jellokeyboard.mp4" },
+  { url: "/images/audiskrt.mp4" },
+  { url: "/images/purplegorilla.mp4" },
+  { url: "/images/deadpooljoker.mp4" },
+  { url: "/images/chromeknight.mp4" },
+  { url: "/images/cuttingjello.mp4" },
+  { url: "/images/sharkscutting.mp4" },
+  { url: "/images/matrixbear.mp4" },
+  { url: "/images/racoonscroll.mp4" },
+  { url: "/images/drillingholes.mp4" },
+  { url: "/images/bubblefloat.mp4" },
+  { url: "/images/corgirainbow.mp4" },
+  { url: "/images/businesstiger.mp4" },
+  { url: "/images/frogdance.mp4" },
 ];
 
 export default function VideoGallery() {
@@ -71,22 +71,9 @@ export default function VideoGallery() {
       {videos.map((video, i) => (
         <div key={i} className="relative w-full max-w-[800px] mx-auto aspect-video rounded-xl overflow-hidden">
           <div className="video-wrapper" style={{ position: 'relative' }}>
-            <img
-              src={video.thumbnail}
-              alt="video thumbnail"
-              style={{
-                position: 'absolute',
-                top: 0,
-                left: 0,
-                width: '100%',
-                height: '100%',
-                objectFit: 'cover',
-                zIndex: 0,
-              }}
-            />
             <video
               src={video.url}
-              poster={video.thumbnail}
+              poster={video.url}
               preload="metadata"
               muted
               playsInline
