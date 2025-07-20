@@ -1,8 +1,12 @@
 import Image from "next/image";
 
-export default function Footer() {
+type FooterProps = {
+  border?: boolean;
+};
+
+export default function Footer({ border = false }: FooterProps) {
   return (
-    <footer className="bg-black text-white px-6 py-12 text-center">
+    <footer className={`bg-black text-white px-6 py-12 text-center ${border ? "border-t border-gray-200" : ""}`}>
       <div className="flex flex-col md:flex-row justify-between items-center max-w-6xl mx-auto space-y-6 md:space-y-0">
         <div className="flex items-center space-x-3">
           <Image src="/images/favicon.png" alt="Emerge Logo" width={24} height={24} />
