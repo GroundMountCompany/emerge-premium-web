@@ -49,6 +49,7 @@ export default function VideoGallery() {
               muted
               playsInline
               loop
+              autoPlay={false}
               controls={false}
               className={`w-full h-full object-cover rounded-xl transform scale-100 hover:scale-[1.02] transition-transform duration-300 ${isMobile ? 'opacity-100' : ''}`}
               style={{ 
@@ -56,6 +57,11 @@ export default function VideoGallery() {
                 position: 'relative',
                 opacity: isMobile ? 1 : undefined,
                 display: isMobile ? 'block' : undefined
+              }}
+              onLoadedMetadata={(e) => {
+                const vid = e.currentTarget;
+                vid.pause();
+                vid.currentTime = 0;
               }}
               onMouseEnter={(e) => e.currentTarget.play()}
               onMouseLeave={(e) => {
