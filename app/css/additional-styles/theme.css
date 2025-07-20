@@ -91,3 +91,12 @@ transition-property: transform, opacity;
       transform: translate3d(10px, 0, 0) scale(1.2);
   }
 }
+
+/* Prophet-Inspired Theme Colors */
+@theme {
+  --color-bg: #F8F4F0;               /* Creamy light background */
+  --color-text: #333333;              /* Dark gray text */
+  --color-accent: #FF7A35;            /* Vibrant orange */
+  --color-accent-hover: #E6692F;      /* Slightly deeper */
+  --font-sans: 'Prophet', sans-serif; /* Bold display font */
+}

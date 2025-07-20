@@ -1,11 +1,39 @@
 @import 'tailwindcss';
 
+/* Form Input Styles */
+.input {
+  @apply w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-200;
+}
+
+.input:focus {
+  @apply shadow-lg;
+}
+
 /* Additional styles */
 @import './additional-styles/utility-patterns.css' layer(components);
 @import './additional-styles/theme.css';
 
 @plugin "@tailwindcss/forms" {
   strategy: base;
+}
+
+/* Prophet-Inspired Global Aesthetic */
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  letter-spacing: 0.02em;
+}
+
+a, button {
+  color: var(--color-accent);
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+a:hover, button:hover {
+  color: var(--color-accent-hover);
+  text-decoration: none;
+  border-bottom: 2px solid var(--color-accent-hover);
 }
 
 @theme {

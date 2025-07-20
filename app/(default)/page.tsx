@@ -1,22 +1,24 @@
 export const metadata = {
-  title: "Home - Simple",
-  description: "Page description",
+  title: "Emerge Premium Studios – Free AI Video Idea Service",
+  description: "Generate My Free Concept Video. We'll make it for FREE — watermark included. Pay only if you love it.",
 };
 
-import Hero from "@/components/hero-home";
-import BusinessCategories from "@/components/business-categories";
-import FeaturesPlanet from "@/components/features-planet";
-import LargeTestimonial from "@/components/large-testimonial";
-import Cta from "@/components/cta";
+import Hero from "@/components/Hero";
+import VideoGallery from "@/components/VideoGallery";
+import HowItWorks from "@/components/HowItWorks";
+import About from "@/components/About";
+import VideoRequestForm from "@/components/VideoRequestForm";
+import Faqs from "@/components/Faqs";
 
 export default function Home() {
   return (
     <>
       <Hero />
-      <BusinessCategories />
-      <FeaturesPlanet />
-      <LargeTestimonial />
-      <Cta />
+      <VideoGallery />
+      <About />
+      <HowItWorks />
+      <VideoRequestForm />
+      <Faqs />
     </>
   );
 }
