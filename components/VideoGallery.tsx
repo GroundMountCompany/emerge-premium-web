@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const videos = [
   { url: "/images/dalmatianhorse.mp4", thumbnail: "/images/dalmatianhorse.jpg" },
@@ -21,6 +21,51 @@ const videos = [
 ];
 
 export default function VideoGallery() {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    // Check if device is touch/mobile
+    const checkMobile = () => {
+      const isTouchDevice = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
+      const isMobileUserAgent = /Mobi|Android/i.test(navigator.userAgent);
+      setIsMobile(isTouchDevice || isMobileUserAgent);
+    };
+
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  const handleMouseEnter = (e: React.MouseEvent<HTMLVideoElement>) => {
+    if (!isMobile) {
+      e.currentTarget.play().catch((error) => {
+        console.log("Video play failed:", error);
+      });
+    }
+  };
+
+  const handleMouseLeave = (e: React.MouseEvent<HTMLVideoElement>) => {
+    if (!isMobile) {
+      e.currentTarget.pause();
+      e.currentTarget.currentTime = 0;
+    }
+  };
+
+  const handleTouchStart = (e: React.TouchEvent<HTMLVideoElement>) => {
+    if (isMobile) {
+      const video = e.currentTarget;
+      if (video.paused) {
+        video.play().catch((error) => {
+          console.log("Video play failed on touch:", error);
+        });
+      } else {
+        video.pause();
+        video.currentTime = 0;
+      }
+    }
+  };
+
   return (
     <section id="gallery" className="grid grid-cols-1 md:grid-cols-2 gap-4 px-6 py-12">
       {videos.map((video, i) => (
@@ -31,11 +76,13 @@ export default function VideoGallery() {
             muted
             loop
             playsInline
-            className="w-full h-full object-cover rounded-xl transform scale-100 hover:scale-[1.02] transition-transform duration-300"
-            onMouseEnter={(e) => e.currentTarget.play()}
-            onMouseLeave={(e) => {
-              e.currentTarget.pause();
-              e.currentTarget.currentTime = 0;
+            className={`w-full h-full object-cover rounded-xl transform scale-100 hover:scale-[1.02] transition-transform duration-300 ${isMobile ? 'opacity-100' : ''}`}
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+            onTouchStart={handleTouchStart}
+            style={{ 
+              opacity: isMobile ? 1 : undefined,
+              display: isMobile ? 'block' : undefined
             }}
           />
         </div>
