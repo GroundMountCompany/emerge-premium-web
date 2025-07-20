@@ -70,21 +70,39 @@ export default function VideoGallery() {
     <section id="gallery" className="grid grid-cols-1 md:grid-cols-2 gap-4 px-6 py-12">
       {videos.map((video, i) => (
         <div key={i} className="relative w-full max-w-[800px] mx-auto aspect-video rounded-xl overflow-hidden">
-          <video
-            src={video.url}
-            poster={video.thumbnail}
-            muted
-            loop
-            playsInline
-            className={`w-full h-full object-cover rounded-xl transform scale-100 hover:scale-[1.02] transition-transform duration-300 ${isMobile ? 'opacity-100' : ''}`}
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-            onTouchStart={handleTouchStart}
-            style={{ 
-              opacity: isMobile ? 1 : undefined,
-              display: isMobile ? 'block' : undefined
-            }}
-          />
+          <div className="video-wrapper" style={{ position: 'relative' }}>
+            <img
+              src={video.thumbnail}
+              alt="video thumbnail"
+              style={{
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover',
+                zIndex: 0,
+              }}
+            />
+            <video
+              src={video.url}
+              poster={video.thumbnail}
+              preload="metadata"
+              muted
+              playsInline
+              loop
+              className={`w-full h-full object-cover rounded-xl transform scale-100 hover:scale-[1.02] transition-transform duration-300 ${isMobile ? 'opacity-100' : ''}`}
+              style={{ 
+                zIndex: 1, 
+                position: 'relative',
+                opacity: isMobile ? 1 : undefined,
+                display: isMobile ? 'block' : undefined
+              }}
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
+              onTouchStart={handleTouchStart}
+            />
+          </div>
         </div>
       ))}
     </section>
