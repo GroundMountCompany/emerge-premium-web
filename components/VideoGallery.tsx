@@ -37,35 +37,6 @@ export default function VideoGallery() {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
-  const handleMouseEnter = (e: React.MouseEvent<HTMLVideoElement>) => {
-    if (!isMobile) {
-      e.currentTarget.play().catch((error) => {
-        console.log("Video play failed:", error);
-      });
-    }
-  };
-
-  const handleMouseLeave = (e: React.MouseEvent<HTMLVideoElement>) => {
-    if (!isMobile) {
-      e.currentTarget.pause();
-      e.currentTarget.currentTime = 0;
-    }
-  };
-
-  const handleTouchStart = (e: React.TouchEvent<HTMLVideoElement>) => {
-    if (isMobile) {
-      const video = e.currentTarget;
-      if (video.paused) {
-        video.play().catch((error) => {
-          console.log("Video play failed on touch:", error);
-        });
-      } else {
-        video.pause();
-        video.currentTime = 0;
-      }
-    }
-  };
-
   return (
     <section id="gallery" className="grid grid-cols-1 md:grid-cols-2 gap-4 px-6 py-12">
       {videos.map((video, i) => (
@@ -78,6 +49,7 @@ export default function VideoGallery() {
               muted
               playsInline
               loop
+              controls={false}
               className={`w-full h-full object-cover rounded-xl transform scale-100 hover:scale-[1.02] transition-transform duration-300 ${isMobile ? 'opacity-100' : ''}`}
               style={{ 
                 zIndex: 1, 
@@ -85,9 +57,20 @@ export default function VideoGallery() {
                 opacity: isMobile ? 1 : undefined,
                 display: isMobile ? 'block' : undefined
               }}
-              onMouseEnter={handleMouseEnter}
-              onMouseLeave={handleMouseLeave}
-              onTouchStart={handleTouchStart}
+              onMouseEnter={(e) => e.currentTarget.play()}
+              onMouseLeave={(e) => {
+                e.currentTarget.pause();
+                e.currentTarget.currentTime = 0;
+              }}
+              onTouchStart={(e) => {
+                const video = e.currentTarget;
+                if (video.paused) {
+                  video.play();
+                } else {
+                  video.pause();
+                  video.currentTime = 0;
+                }
+              }}
             />
           </div>
         </div>
