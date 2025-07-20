@@ -1,8 +1,12 @@
 'use client';
 
-export default function Footer() {
+type FooterProps = {
+  border?: boolean;
+};
+
+export default function Footer({ border = false }: FooterProps) {
   return (
-    <footer id="contact" className="px-6 py-24 max-w-4xl mx-auto" style={{ backgroundColor: 'var(--color-bg)' }}>
+    <footer id="contact" className={`px-6 py-24 max-w-4xl mx-auto ${border ? "border-t border-gray-200" : ""}`} style={{ backgroundColor: 'var(--color-bg)' }}>
       <h2 className="text-3xl md:text-4xl font-semibold mb-8 text-center uppercase text-[#FF7A35]">
         Submit Your Video Idea
       </h2>
