@@ -1,33 +1,43 @@
-# Free Tailwind landing page template
+# Tailwind Landing Page Template
 
-![Simple TailwindCSS template preview](https://github.com/cruip/tailwind-landing-page-template/assets/2683512/f9a98fab-a1bc-4fb5-8572-4de0b6bd932a)
+A modern, responsive landing page template built with Next.js 15, React 19, and Tailwind CSS v4.
 
-**Simple Light** is a free landing page template built on top of **TailwindCSS** and fully coded in **React** / **Next.js**. Simple light is designed to provide all the basic components a developer need to create a landing page for SaaS products, online services, and more.
+## Features
 
-**UPDATE 2025-02-04** Added Tailwind v4 support!
+- **Next.js 15** with App Router
+- **React 19** with Server Components
+- **Tailwind CSS v4** with custom theme
+- **TypeScript** for type safety
+- **Framer Motion** for animations
+- **Responsive Design** for all devices
+- **Email Integration** with Resend
 
-Use it for whatever you want, and be sure to reach us out on X if you build anything cool/useful with it.
-Created and maintained with ❤️ by [Cruip.com](https://cruip.com/).
+## Email Setup (Resend)
 
-_Version 1.3.3 built with Tailwind CSS and React + Vite is available [here](https://github.com/cruip/tailwind-landing-page-template/releases/tag/1.3.3)._
+This project uses Resend for email form submissions. To set up email functionality:
 
-## Live demo
+### 1. Create Resend Account
+- Sign up at [resend.com](https://resend.com)
+- Get your API key from the dashboard
 
-Check the live demo here 👉️ [https://simple.cruip.com/](https://simple.cruip.com/)
+### 2. Verify Domain
+- Add and verify `emergepremium.com` in your Resend dashboard
+- This allows sending from `no-reply@emergepremium.com`
 
-## Simple Pro
+### 3. Environment Variables
+Create a `.env.local` file in the root directory:
 
-[![Simple Pro](https://github.com/cruip/tailwind-landing-page-template/assets/2683512/992be2ba-3de7-4838-be41-12e85686c193)](https://cruip.com/)
+```bash
+# Resend API Key
+RESEND_API_KEY=your_resend_api_key_here
+```
 
-## Design files
+### 4. Vercel Deployment
+Add the environment variable to your Vercel project:
+- Go to your Vercel project settings
+- Add `RESEND_API_KEY` with your API key value
 
-If you need the design files, you can download them from Figma's Community 👉 https://bit.ly/3HOZMpf
-
-## Usage
-
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-
-### Getting Started
+## Getting Started
 
 First, run the development server:
 
