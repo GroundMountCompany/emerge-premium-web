@@ -11,9 +11,6 @@ const inter = Inter({
 export const metadata = {
   title: "Emerge Premium Studios",
   description: "Professional video production and content creation services",
-  icons: {
-    icon: "/favicon.png",
-  },
 };
 
 export default function RootLayout({
@@ -23,6 +20,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="scroll-smooth">
+      <head>
+        <link rel="icon" href="/favicon.ico" />
+      </head>
       <body
         className={`${inter.variable} bg-gray-50 font-inter tracking-tight text-gray-900 antialiased`}
       >
