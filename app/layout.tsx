@@ -18,7 +18,19 @@ export const metadata = {
         type: "image/png",
         sizes: "32x32",
       },
+      {
+        url: "/favicon.png",
+        type: "image/png",
+        sizes: "16x16",
+      },
+      {
+        url: "/favicon.png",
+        type: "image/png",
+        sizes: "48x48",
+      },
     ],
+    shortcut: "/favicon.png",
+    apple: "/favicon.png",
   },
 };
 
@@ -29,6 +41,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="scroll-smooth">
+      <head>
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+      </head>
       <body
         className={`${inter.variable} bg-gray-50 font-inter tracking-tight text-gray-900 antialiased`}
       >
